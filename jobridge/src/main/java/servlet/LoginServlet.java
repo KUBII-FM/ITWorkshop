@@ -22,22 +22,24 @@ public class LoginServlet extends HttpServlet {
         String password = request.getParameter("password");
 
         try (Connection conn = DatabaseUtil.getConnection()) {
-            String sql = "SELECT * FROM users WHERE user_id = ? AND password = ?";
+            String sql = "SELECT username FROM users WHERE user_id = ? AND password = ?";
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setString(1, userId);
             stmt.setString(2, password);
 
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
+                String username = rs.getString("username");
                 HttpSession session = request.getSession();
                 session.setAttribute("user_id", userId);
-                response.sendRedirect("main");
+                session.setAttribute("username", username);
+                response.sendRedirect("UserServlet");
             } else {
-                response.sendRedirect("index.jsp?error=1");
+                response.sendRedirect("index.jsp?error=1"); // エラーコード1: ログイン失敗
             }
         } catch (SQLException e) {
             e.printStackTrace();
-            response.sendRedirect("index.jsp?error=2");
+            response.sendRedirect("index.jsp?error=2"); // エラーコード2: データベースエラー
         }
     }
 }

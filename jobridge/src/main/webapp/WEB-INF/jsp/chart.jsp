@@ -10,7 +10,7 @@
     <h1>利用者 ${userId} の気分のグラフ</h1>
 
     <!-- グラフ表示領域 -->
-    <canvas id="moodChart" width="400" height="200"></canvas>
+    <canvas id="moodChart" width="300" height="150"></canvas>
 
 	<script>
 	    const moodData = ${moodDataJson};
@@ -88,6 +88,6 @@
         <button type="submit">期間を適用</button>
     </form>
     
-    <a href="AdminServlet">管理者ページに戻る</a>
+    <a href="./AdminServlet">管理者ページに戻る</a>
 </body>
 </html>

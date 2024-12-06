@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -16,42 +17,55 @@ import model.DatabaseUtil;
 @WebServlet("/RegisterServlet")
 public class RegisterServlet extends HttpServlet {
     @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/register.jsp");
+        dispatcher.forward(request, response);
+    }
+
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String userId = request.getParameter("user_id");
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         String confirmPassword = request.getParameter("confirm_password");
 
-        // パスワード確認
         if (!password.equals(confirmPassword)) {
-            response.sendRedirect("jsp/register.jsp?error=password_mismatch");
+            request.setAttribute("error", "password_mismatch");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/register.jsp");
+            dispatcher.forward(request, response);
             return;
         }
 
         try (Connection conn = DatabaseUtil.getConnection()) {
-            // 重複チェック
-            String checkSql = "SELECT COUNT(*) FROM users WHERE user_id = ?";
+            String checkSql = "SELECT COUNT(*) FROM users WHERE user_id = ? OR username = ?";
             PreparedStatement checkStmt = conn.prepareStatement(checkSql);
             checkStmt.setString(1, userId);
+            checkStmt.setString(2, username);
             ResultSet rs = checkStmt.executeQuery();
             rs.next();
+
             if (rs.getInt(1) > 0) {
-                response.sendRedirect("jsp/register.jsp?error=user_exists");
+                request.setAttribute("error", "user_or_username_exists");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/register.jsp");
+                dispatcher.forward(request, response);
                 return;
             }
 
-            // 新規登録
             String insertSql = "INSERT INTO users (user_id, username, password) VALUES (?, ?, ?)";
-            PreparedStatement stmt = conn.prepareStatement(insertSql);
-            stmt.setString(1, userId);
-            stmt.setString(2, username);
-            stmt.setString(3, password);
-            stmt.executeUpdate();
+            PreparedStatement insertStmt = conn.prepareStatement(insertSql);
+            insertStmt.setString(1, userId);
+            insertStmt.setString(2, username);
+            insertStmt.setString(3, password);
+            insertStmt.executeUpdate();
 
-            response.sendRedirect("jsp/index.jsp?success=registered");
+            request.setAttribute("success", "registered");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/register.jsp");
+            dispatcher.forward(request, response);
         } catch (SQLException e) {
             e.printStackTrace();
-            response.sendRedirect("jsp/register.jsp?error=database_error");
+            request.setAttribute("error", "database_error");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/register.jsp");
+            dispatcher.forward(request, response);
         }
     }
 }

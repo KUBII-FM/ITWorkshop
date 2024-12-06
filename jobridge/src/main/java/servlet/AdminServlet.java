@@ -25,7 +25,7 @@ public class AdminServlet extends HttpServlet {
         String adminId = (String) session.getAttribute("admin_id");
 
         if (adminId == null) {
-            response.sendRedirect("WEB-INF/jsp/login.jsp?error=not_logged_in");
+            response.sendRedirect("WEB-INF/jsp/admin_login.jsp?error=not_logged_in");
             return;
         }
 

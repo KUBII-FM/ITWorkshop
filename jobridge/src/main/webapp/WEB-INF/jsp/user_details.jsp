@@ -1,4 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="jakarta.tags.core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,21 +22,15 @@
             </tr>
         </c:forEach>
     </table>
+    
+    <!-- 期間選択フォーム -->
     <form action="ChartServlet" method="get">
         <input type="hidden" name="user_id" value="${userId}">
-        <label>期間を選択:</label>
-        <select name="period">
-            <option value="month">当月</option>
-            <option value="30days">過去30日</option>
-            <option value="custom">指定期間</option>
-        </select>
-        <br>
-        <label>開始日:</label>
-        <input type="date" name="start_date">
-        <label>終了日:</label>
-        <input type="date" name="end_date">
-        <br>
-        <button type="submit">グラフを表示</button>
+        <label for="start_date">開始日:</label>
+        <input type="date" id="start_date" name="start_date" required>
+        <label for="end_date">終了日:</label>
+        <input type="date" id="end_date" name="end_date" required>
+        <button type="submit">期間を適用</button>
     </form>
     <a href="AdminServlet">管理者ページに戻る</a>
 </body>

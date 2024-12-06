@@ -51,7 +51,6 @@
             </c:if>
         </tbody>
     </table>
-
-    <a href="logout.jsp">ログアウト</a>
+    <a href="./LogoutServlet">ログアウト</a>
 </body>
 </html>
