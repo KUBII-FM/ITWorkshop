@@ -40,11 +40,11 @@ public class AdminLoginServlet extends HttpServlet {
                 session.setAttribute("admin_id", adminId);
                 response.sendRedirect("AdminServlet");
             } else {
-                response.sendRedirect("admin_login.jsp?error=invalid_credentials");
+                response.sendRedirect("/WEB-INF/jsp/admin_login.jsp?error=invalid_credentials");
             }
         } catch (SQLException e) {
             e.printStackTrace();
-            response.sendRedirect("admin_login.jsp?error=database_error");
+            response.sendRedirect("/WEB-INF/jsp/admin_login.jsp?error=database_error");
         }
     }
 }

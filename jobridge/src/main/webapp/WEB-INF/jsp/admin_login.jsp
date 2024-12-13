@@ -3,6 +3,9 @@
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
     <title>管理者ログイン</title>
 </head>
 <body>
@@ -14,6 +17,8 @@
         <input type="password" id="password" name="password" required>
         <button type="submit">ログイン</button>
     </form>
+    <div class="container">
     <a href="./index.jsp">トップページに戻る</a>
+    </div>
 </body>
 </html>

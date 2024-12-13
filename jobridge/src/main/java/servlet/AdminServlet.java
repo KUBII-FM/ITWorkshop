@@ -30,12 +30,11 @@ public class AdminServlet extends HttpServlet {
         }
 
         try (Connection conn = DatabaseUtil.getConnection()) {
-            String sql = "SELECT u.user_id, u.username, e.date, e.mood, e.comment " +
-                         "FROM users u " +
-                         "LEFT JOIN entries e ON u.user_id = e.user_id " +
-                         "WHERE e.date = CURDATE() OR e.date IS NULL";
-            PreparedStatement stmt = conn.prepareStatement(sql);
-            ResultSet rs = stmt.executeQuery();
+        	String sql = "SELECT u.user_id, u.username, e.date, e.mood, e.comment " +
+                    "FROM users u " +
+                    "LEFT JOIN entries e ON u.user_id = e.user_id AND e.date = CURDATE()";
+		    PreparedStatement stmt = conn.prepareStatement(sql);
+		    ResultSet rs = stmt.executeQuery();
 
             ArrayList<HashMap<String, String>> userData = new ArrayList<>();
             while (rs.next()) {

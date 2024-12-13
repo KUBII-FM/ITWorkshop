@@ -3,10 +3,14 @@
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
     <title>気分のグラフ</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
+<div class="container">
     <h1>利用者 ${userId} の気分のグラフ</h1>
 
     <!-- グラフ表示領域 -->
@@ -28,7 +32,7 @@
 	            data: {
 	                labels: labels,
 	                datasets: [{
-	                    label: '気分の推移',
+	                	label: '気分の推移',
 	                    data: dataPoints,
 	                    borderColor: '#FF5733', // ラインの色
 	                    backgroundColor: 'rgba(255, 87, 51, 0.2)', // 塗りつぶしの色
@@ -77,17 +81,19 @@
 	        });
 	    }
 	</script>
+	</div>
        
     <!-- 期間選択フォーム -->
-    <form action="ChartServlet" method="get">
-        <input type="hidden" name="user_id" value="${userId}">
-        <label for="start_date">開始日:</label>
-        <input type="date" id="start_date" name="start_date" required>
-        <label for="end_date">終了日:</label>
-        <input type="date" id="end_date" name="end_date" required>
-        <button type="submit">期間を適用</button>
-    </form>
-    
+	<form action="ChartServlet" method="get" class="date-range-form">
+	    <input type="hidden" name="user_id" value="${userId}">
+	    <label for="start_date">開始日:</label>
+	    <input type="date" id="start_date" name="start_date" required>
+	    <label for="end_date">終了日:</label>
+	    <input type="date" id="end_date" name="end_date" required>
+	    <button type="submit">適用</button>
+	</form>
+    <div class="container">
     <a href="./AdminServlet">管理者ページに戻る</a>
+    </div>
 </body>
 </html>

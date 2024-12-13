@@ -4,6 +4,9 @@
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
     <title>管理者ページ</title>
 </head>
 <body>
@@ -31,7 +34,7 @@
                 <tr>
                     <!-- 利用者IDをリンク化 -->
                     <td>
-                        <a href="ChartServlet?user_id=${user.user_id}&period=month">${user.user_id}</a>
+                        <a href="UserHistoryServlet?user_id=${user.user_id}">${user.user_id}</a>
                     </td>
                     <td>${user.username}</td>
                     <td>${user.date}</td>
@@ -51,6 +54,9 @@
             </c:if>
         </tbody>
     </table>
+    <div class="container">
+    <a href="./EditUserServlet">利用者一覧を表示</a>
     <a href="./LogoutServlet">ログアウト</a>
+    </div>
 </body>
 </html>

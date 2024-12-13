@@ -4,10 +4,13 @@
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="css/style.css">
-    <title>メンタル管理ツール - トップページ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
+    <title>ココログ - トップページ</title>
 </head>
 <body>
-    <h1>メンタル管理ツール</h1>
+    <h1>ココログ</h1>
     
     <!-- エラーメッセージの表示 -->
     <c:if test="${param.error == '1'}">
@@ -30,8 +33,9 @@
         <br>
         <button type="submit">ログイン</button>
     </form>
-
+    <div class="container">
     <a href="./RegisterServlet">新規登録はこちら</a><br>
     <a href="./AdminLoginServlet">管理者ログインはこちら</a>
+    </div>
 </body>
 </html>

@@ -4,11 +4,14 @@
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
     <title>新規登録</title>
 </head>
 <body>
     <h1>新規登録</h1>
-    
+    <div class="container">
     <!-- エラーメッセージの表示 -->
 	<c:if test="${not empty error}">
 	    <p class="error">
@@ -32,7 +35,7 @@
 	<c:if test="${not empty success}">
 	    <p class="success">登録が完了しました。</p>
 	</c:if>
-
+	</div>
     
     <form action="./RegisterServlet" method="post">
         <label for="user_id">利用者番号:</label>
@@ -45,6 +48,8 @@
         <input type="password" id="confirm_password" name="confirm_password" required>
         <button type="submit">登録</button>
     </form>
+    <div class="container">
     <a href="./index.jsp">トップページに戻る</a>
+    </div>
 </body>
 </html>

@@ -28,34 +28,23 @@ public class UserServlet extends HttpServlet {
         }
 
         String userId = (String) session.getAttribute("user_id");
+        
         try (Connection conn = DatabaseUtil.getConnection()) {
             String sql = "SELECT mood, comment, date FROM entries WHERE user_id = ? AND date = CURDATE()";
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setString(1, userId);
-
             ResultSet rs = stmt.executeQuery();
 
             if (rs.next()) {
-                // データが存在する場合の処理
-                int mood = rs.getInt("mood");
-                String comment = rs.getString("comment");
-                java.sql.Date date = rs.getDate("date");
-
-                // JSP に渡すデータをリクエストスコープに設定
-                request.setAttribute("mood", mood);
-                request.setAttribute("comment", comment);
-                request.setAttribute("date", date);
-            } else {
-                // データが存在しない場合
-                System.out.println("No data found for user_id: " + userId + " on date: " + java.time.LocalDate.now());
+                request.setAttribute("mood", rs.getInt("mood"));
+                request.setAttribute("comment", rs.getString("comment"));
+                request.setAttribute("date", rs.getDate("date"));
             }
         } catch (SQLException e) {
-            // データベースエラー処理
             e.printStackTrace();
             request.setAttribute("error", "database_error");
         }
 
-        // JSP にフォワード
         RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/user_main.jsp");
         dispatcher.forward(request, response);
     }
