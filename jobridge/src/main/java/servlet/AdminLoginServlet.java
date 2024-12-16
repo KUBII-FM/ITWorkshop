@@ -40,11 +40,13 @@ public class AdminLoginServlet extends HttpServlet {
                 session.setAttribute("admin_id", adminId);
                 response.sendRedirect("AdminServlet");
             } else {
-                response.sendRedirect("/WEB-INF/jsp/admin_login.jsp?error=invalid_credentials");
+            	RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/admin_login.jsp?error=invalid_credentials");
+            	dispatcher.forward(request, response);
             }
         } catch (SQLException e) {
             e.printStackTrace();
-            response.sendRedirect("/WEB-INF/jsp/admin_login.jsp?error=database_error");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/admin_login.jsp?error=database_error");
+            dispatcher.forward(request, response);
         }
     }
 }

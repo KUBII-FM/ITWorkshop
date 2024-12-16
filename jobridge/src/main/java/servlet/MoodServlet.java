@@ -68,7 +68,7 @@ public class MoodServlet extends HttpServlet {
 //                System.out.println("Inserted new entry for user_id: " + userId);
             }
 
-            response.sendRedirect("UserServlet?success=entry_saved"); // 登録または更新成功
+            response.sendRedirect("UserServlet?success=entry_added"); // 登録または更新成功
         } catch (SQLException e) {
             e.printStackTrace();
             response.sendRedirect("UserServlet?error=database_error"); // データベースエラー

@@ -11,7 +11,7 @@
 </head>
 <body>
 <div class="container">
-    <h1>利用者 ${userId} の気分のグラフ</h1>
+    <h1>${userId} の気分のグラフ</h1>
 
     <!-- グラフ表示領域 -->
     <canvas id="moodChart" width="300" height="150"></canvas>
@@ -44,7 +44,7 @@
 	                plugins: {
 	                    title: {
 	                        display: true,
-	                        text: '気分の変化 (期間指定)',
+	                        text: '気分の変化',
 	                        font: {
 	                            size: 20
 	                        }
@@ -93,7 +93,8 @@
 	    <button type="submit">適用</button>
 	</form>
     <div class="container">
-    <a href="./AdminServlet">管理者ページに戻る</a>
+    <a href="./AdminServlet">本日の登録情報に戻る</a> | 
+    <a href="./LogoutServlet">ログアウト</a>
     </div>
 </body>
 </html>

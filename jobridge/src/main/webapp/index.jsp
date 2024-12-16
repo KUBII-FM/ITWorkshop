@@ -34,7 +34,7 @@
         <button type="submit">ログイン</button>
     </form>
     <div class="container">
-    <a href="./RegisterServlet">新規登録はこちら</a><br>
+    <a href="./RegisterServlet">新規登録はこちら</a> |
     <a href="./AdminLoginServlet">管理者ログインはこちら</a>
     </div>
 </body>

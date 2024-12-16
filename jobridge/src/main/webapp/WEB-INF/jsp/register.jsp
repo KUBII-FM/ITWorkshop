@@ -33,19 +33,20 @@
 	</c:if>
 	<!-- 登録完了メッセージの表示 -->
 	<c:if test="${not empty success}">
-	    <p class="success">登録が完了しました。</p>
+	    <p class="success">登録が完了しました。<br><a href="./index.jsp">トップページ</a>へ戻ってログインしてください。</p>
 	</c:if>
 	</div>
     
     <form action="./RegisterServlet" method="post">
         <label for="user_id">利用者番号:</label>
-        <input type="text" id="user_id" name="user_id" required>
+        <input type="text" id="user_id" name="user_id" value="${param.user_id}" required>
+
         <label for="username">ニックネーム:</label>
-        <input type="text" id="username" name="username" required>
+        <input type="text" id="username" name="username" value="${param.username}" required>
+
         <label for="password">パスワード:</label>
-        <input type="password" id="password" name="password" required>
-        <label for="confirm_password">パスワード確認:</label>
-        <input type="password" id="confirm_password" name="confirm_password" required>
+        <input type="password" id="password" name="password" value="${param.password}" required>
+
         <button type="submit">登録</button>
     </form>
     <div class="container">

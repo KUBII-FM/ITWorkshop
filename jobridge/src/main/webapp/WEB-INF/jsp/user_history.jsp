@@ -10,7 +10,7 @@
     <title>過去30日間のコメント一覧</title>
 </head>
 <body>
-    <h1>利用者 ${userId} のコメント一覧</h1>
+    <h1>${userId} のコメント一覧</h1>
 
     <!-- エラーメッセージの表示 -->
     <c:if test="${not empty error}">
@@ -63,7 +63,8 @@
 	</form>
 
     <div class="container">
-        <a href="AdminServlet">管理者ページに戻る</a>
+    <a href="AdminServlet">本日の登録情報に戻る</a> | 
+    <a href="./LogoutServlet">ログアウト</a>
     </div>
 </body>
 </html>

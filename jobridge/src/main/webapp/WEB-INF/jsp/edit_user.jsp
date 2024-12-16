@@ -11,7 +11,13 @@
 </head>
 <body>
     <h1>利用者一覧</h1>
-	<div class="container">
+        
+    <c:if test="${param.success == 'user_updated'}">
+        <p class="success">更新が完了しました</p>
+    </c:if>
+    <c:if test="${param.success == 'user_deleted'}">
+        <p class="success">削除が完了しました</p>
+    </c:if>       
     <!-- エラーメッセージの表示 -->
     <c:if test="${not empty error}">
         <p class="error">${error}</p>
@@ -32,7 +38,7 @@
                     <td>${user.user_id}</td>
                     <td>${user.username}</td>
                     <td>
-                        <a href="EditUserServlet?user_id=${user.user_id}">選択</a>
+                        <a href="EditUserFormServlet?user_id=${user.user_id}">選択</a>
                     </td>
                 </tr>
             </c:forEach>
@@ -43,27 +49,9 @@
             </c:if>
         </tbody>
     </table>
-    </div>
-
-    <!-- 個別利用者情報の修正フォーム -->
-    <c:if test="${not empty user_id}">
-        <h3>利用者情報の修正/削除</h3>
-        <form action="EditUserServlet" method="post">
-            <label for="user_id">利用者ID:</label>
-            <input type="text" id="user_id" name="user_id" value="${user_id}" readonly>
-
-            <label for="username">ユーザー名:</label>
-            <input type="text" id="username" name="username" value="${username}" required>
-
-            <label for="password">パスワード:</label>
-            <input type="password" id="password" name="password" value="${password}" required>
-
-            <button type="submit">修正</button>
-            <button href="DeleteUserServlet?user_id=${user.user_id}" onclick="return confirm('本当に削除しますか？');">削除</button>
-        </form>
-    </c:if>
     <div class="container">
-    <a href="AdminServlet">管理者ページに戻る</a>
+    <a href="AdminServlet">本日の登録情報に戻る</a> | 
+    <a href="./LogoutServlet">ログアウト</a>
     </div>
 </body>
 </html>

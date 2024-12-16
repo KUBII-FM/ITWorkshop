@@ -1,4 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="jakarta.tags.core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,6 +11,16 @@
 </head>
 <body>
     <h1>管理者ログイン</h1>
+    
+    <!-- 成功メッセージの表示 -->
+    <c:if test="${param.success == 'updated'}">
+        <p class="success">管理者情報が更新されました。再度ログインしてください。</p>
+    </c:if>
+    <!-- エラーメッセージの表示 -->
+    <c:if test="${param.error == 'invalid_credentials'}">
+        <p class="error">ログインに失敗しました。IDまたはパスワードをご確認ください。</p>
+    </c:if>    
+    
     <form action="./AdminLoginServlet" method="post">
         <label for="admin_id">管理者ID:</label>
         <input type="text" id="admin_id" name="admin_id" required>

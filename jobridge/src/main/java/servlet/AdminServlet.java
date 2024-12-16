@@ -25,14 +25,15 @@ public class AdminServlet extends HttpServlet {
         String adminId = (String) session.getAttribute("admin_id");
 
         if (adminId == null) {
-            response.sendRedirect("WEB-INF/jsp/admin_login.jsp?error=not_logged_in");
-            return;
+        	RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/jsp/admin_login.jsp?error=not_logged_in");
+        	dispatcher.forward(request, response);
         }
 
         try (Connection conn = DatabaseUtil.getConnection()) {
         	String sql = "SELECT u.user_id, u.username, e.date, e.mood, e.comment " +
                     "FROM users u " +
-                    "LEFT JOIN entries e ON u.user_id = e.user_id AND e.date = CURDATE()";
+                    "LEFT JOIN entries e ON u.user_id = e.user_id AND e.date = CURDATE()" +
+                    "ORDER BY u.user_id ASC"; // 昇順に並べ替え;
 		    PreparedStatement stmt = conn.prepareStatement(sql);
 		    ResultSet rs = stmt.executeQuery();
 

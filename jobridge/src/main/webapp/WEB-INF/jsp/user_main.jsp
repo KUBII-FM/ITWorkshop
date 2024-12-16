@@ -10,7 +10,7 @@
     <title>利用者メインページ</title>
 </head>
 <body>
-        <h1>ココログ - メインページ</h1>
+        <h1>ココログ</h1>
         
         <div class="container">
         <p>ようこそ、<strong>${sessionScope.username}</strong>さん</p>
@@ -37,7 +37,6 @@
 	        </p>
 	        <p><strong>コメント:</strong> ${comment}</p>
 	    </c:if>
-	    
 	    </div>
 	
 	    <!-- 今日の気持ちとコメントを入力するフォーム -->
@@ -52,12 +51,8 @@
 	            <option value="4" ${mood == 4 ? 'selected' : ''}>好調</option>
 	            <option value="5" ${mood == 5 ? 'selected' : ''}>絶好調</option>
 	        </select>
-	        <br><br>
-
             <label for="comment">コメント 最大128文字 (任意):</label>
             <textarea id="comment" name="comment" rows="4" placeholder="コメントを入力してください">${comment}</textarea>
-        <br><br>
-
         <button type="submit">登録 / 更新</button>
     </form>
 	<div class="container">

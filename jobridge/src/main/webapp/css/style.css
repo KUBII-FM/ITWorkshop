@@ -23,7 +23,7 @@ a {
     color: #fa9638;
     font-weight: bold;
     display: inline-block;
-    margin-top: 20px;
+    margin-top: auto;
     text-align: center;
 }
 
@@ -124,7 +124,7 @@ tr:hover {
 /* ページ全体の統一感 */
 .container {
     text-align: center;
-    margin-top: 20px;
+    margin-top: auto;
     padding: 10px;
 }
 

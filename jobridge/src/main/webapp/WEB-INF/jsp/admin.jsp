@@ -55,7 +55,8 @@
         </tbody>
     </table>
     <div class="container">
-    <a href="./EditUserServlet">利用者一覧を表示</a>
+    <a href="./EditUserServlet">利用者情報の変更</a> | 
+    <a href="./EditAdminServlet">管理者情報の変更</a> |
     <a href="./LogoutServlet">ログアウト</a>
     </div>
 </body>

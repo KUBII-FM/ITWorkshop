@@ -64,33 +64,67 @@ public class EditUserServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String action = request.getParameter("action");
         String userId = request.getParameter("user_id");
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
 
-        if (userId == null || username == null || password == null || username.isEmpty() || password.isEmpty()) {
-            request.setAttribute("error", "すべてのフィールドを入力してください。");
-            doGet(request, response);
-            return;
-        }
+        if ("update".equals(action)) {
+            // 修正処理
+            String username = request.getParameter("username");
+            String password = request.getParameter("password");
+            String confirmPassword = request.getParameter("confirm_password");
 
-        try (Connection conn = DatabaseUtil.getConnection()) {
-            String sql = "UPDATE users SET username = ?, password = ? WHERE user_id = ?";
-            PreparedStatement stmt = conn.prepareStatement(sql);
-            stmt.setString(1, username);
-            stmt.setString(2, password);
-            stmt.setString(3, userId);
+            if (userId == null || username == null || password == null || username.isEmpty() || password.isEmpty()) {
+                request.setAttribute("error", "すべてのフィールドを入力してください。");
+                doGet(request, response);
+                return;
+            }
+            if (!password.equals(confirmPassword)) {
+                request.setAttribute("error", "パスワードが一致していません。");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/edit_user_form.jsp");
+                dispatcher.forward(request, response);
+                return;
+            }
 
-            int rowsUpdated = stmt.executeUpdate();
-            if (rowsUpdated > 0) {
-                response.sendRedirect("AdminServlet?success=user_updated");
-            } else {
-                request.setAttribute("error", "更新に失敗しました。");
+            try (Connection conn = DatabaseUtil.getConnection()) {
+                String sql = "UPDATE users SET username = ?, password = ? WHERE user_id = ?";
+                PreparedStatement stmt = conn.prepareStatement(sql);
+                stmt.setString(1, username);
+                stmt.setString(2, password);
+                stmt.setString(3, userId);
+
+                int rowsUpdated = stmt.executeUpdate();
+                if (rowsUpdated > 0) {
+                    response.sendRedirect("EditUserServlet?success=user_updated");
+                } else {
+                    request.setAttribute("error", "更新に失敗しました。");
+                    doGet(request, response);
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+                request.setAttribute("error", "データベースエラーが発生しました。");
                 doGet(request, response);
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            request.setAttribute("error", "データベースエラーが発生しました。");
+        } else if ("delete".equals(action)) {
+            // 削除処理
+            try (Connection conn = DatabaseUtil.getConnection()) {
+                String sql = "DELETE FROM users WHERE user_id = ?";
+                PreparedStatement stmt = conn.prepareStatement(sql);
+                stmt.setString(1, userId);
+
+                int rowsDeleted = stmt.executeUpdate();
+                if (rowsDeleted > 0) {
+                    response.sendRedirect("EditUserServlet?success=user_deleted");
+                } else {
+                    request.setAttribute("error", "削除に失敗しました。");
+                    doGet(request, response);
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+                request.setAttribute("error", "データベースエラーが発生しました。");
+                doGet(request, response);
+            }
+        } else {
+            request.setAttribute("error", "無効なアクションです。");
             doGet(request, response);
         }
     }
