@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="stylesheet" type="text/css" href="./css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -10,7 +11,7 @@
     <title>管理者ログイン</title>
 </head>
 <body>
-    <h1>管理者ログイン</h1>
+    <h1>ココログ</h1>
     
     <!-- 成功メッセージの表示 -->
     <c:if test="${param.success == 'updated'}">
@@ -22,6 +23,7 @@
     </c:if>    
     
     <form action="./AdminLoginServlet" method="post">
+    	<h3>管理者ログイン</h3>
         <label for="admin_id">管理者ID:</label>
         <input type="text" id="admin_id" name="admin_id" required>
         <label for="password">パスワード:</label>

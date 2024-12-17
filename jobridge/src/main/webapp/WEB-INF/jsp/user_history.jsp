@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="stylesheet" type="text/css" href="./css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -53,13 +54,21 @@
     </table>
     
     <!-- 期間選択フォーム -->
-	<form action="UserHistoryServlet" method="get" class="date-range-form">
+	<form action="ChartServlet" method="get" class="date-range-form">
 	    <input type="hidden" name="user_id" value="${userId}">
-	    <label for="start_date">開始日:</label>
-	    <input type="date" id="start_date" name="start_date" required>
-	    <label for="end_date">終了日:</label>
-	    <input type="date" id="end_date" name="end_date" required>
-	    <button type="submit">適用</button>
+	
+	    <div class="form-group">
+	        <label for="start_date">開始日:</label>
+	        <input type="date" id="start_date" name="start_date" required>
+	      </div>
+	    <div class="form-group">
+	        <label for="end_date">終了日:</label>
+	        <input type="date" id="end_date" name="end_date" required>
+	    </div>
+	
+	    <div class="form-button">
+	        <button type="submit">適用</button>
+	    </div>
 	</form>
 
     <div class="container">

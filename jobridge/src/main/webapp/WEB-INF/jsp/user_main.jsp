@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,11 +29,11 @@
 	    <c:if test="${not empty mood}">
 	        <p><strong>気持ち:</strong> 
 	            <c:choose>
-	                <c:when test="${mood == 1}">絶不調</c:when>
-	                <c:when test="${mood == 2}">不調</c:when>
-	                <c:when test="${mood == 3}">普通</c:when>
-	                <c:when test="${mood == 4}">好調</c:when>
 	                <c:when test="${mood == 5}">絶好調</c:when>
+	                <c:when test="${mood == 4}">好調</c:when>
+	                <c:when test="${mood == 3}">普通</c:when>
+	                <c:when test="${mood == 2}">不調</c:when>
+	                <c:when test="${mood == 1}">絶不調</c:when>
 	            </c:choose>
 	        </p>
 	        <p><strong>コメント:</strong> ${comment}</p>
@@ -45,11 +46,11 @@
 	        <label for="mood">今日の気持ちを選択してください :</label>
 	        <select id="mood" name="mood" required>
 	            <option value="">選択してください</option>
-	            <option value="1" ${mood == 1 ? 'selected' : ''}>絶不調</option>
-	            <option value="2" ${mood == 2 ? 'selected' : ''}>不調</option>
-	            <option value="3" ${mood == 3 ? 'selected' : ''}>普通</option>
-	            <option value="4" ${mood == 4 ? 'selected' : ''}>好調</option>
 	            <option value="5" ${mood == 5 ? 'selected' : ''}>絶好調</option>
+	            <option value="4" ${mood == 4 ? 'selected' : ''}>好調</option>
+	            <option value="3" ${mood == 3 ? 'selected' : ''}>普通</option>
+	            <option value="2" ${mood == 2 ? 'selected' : ''}>不調</option>
+	            <option value="1" ${mood == 1 ? 'selected' : ''}>絶不調</option>            
 	        </select>
             <label for="comment">コメント 最大128文字 (任意):</label>
             <textarea id="comment" name="comment" rows="4" placeholder="コメントを入力してください">${comment}</textarea>

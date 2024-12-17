@@ -20,7 +20,7 @@ public class AdminLoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // ログインページ (JSP) を表示
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/admin_login.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("./WEB-INF/jsp/admin_login.jsp");
         dispatcher.forward(request, response);
     }
     
@@ -40,12 +40,12 @@ public class AdminLoginServlet extends HttpServlet {
                 session.setAttribute("admin_id", adminId);
                 response.sendRedirect("AdminServlet");
             } else {
-            	RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/admin_login.jsp?error=invalid_credentials");
+            	RequestDispatcher dispatcher = request.getRequestDispatcher("./WEB-INF/jsp/admin_login.jsp?error=invalid_credentials");
             	dispatcher.forward(request, response);
             }
         } catch (SQLException e) {
             e.printStackTrace();
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/admin_login.jsp?error=database_error");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("./WEB-INF/jsp/admin_login.jsp?error=database_error");
             dispatcher.forward(request, response);
         }
     }

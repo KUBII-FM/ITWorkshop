@@ -23,7 +23,7 @@ public class EditAdminServlet extends HttpServlet {
         String adminId = (String) session.getAttribute("admin_id");
 
         if (adminId == null) {
-        	RequestDispatcher dispatcher = request.getRequestDispatcher("admin_login.jsp?error=not_logged_in");
+        	RequestDispatcher dispatcher = request.getRequestDispatcher("./WEB-INF/jsp/admin_login.jsp?error=not_logged_in");
         	dispatcher.forward(request, response);
         }
 
@@ -45,7 +45,7 @@ public class EditAdminServlet extends HttpServlet {
         }
 
         // JSP にフォワード
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/edit_admin.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("./WEB-INF/jsp/edit_admin.jsp");
         dispatcher.forward(request, response);
     }
 	
@@ -57,7 +57,7 @@ public class EditAdminServlet extends HttpServlet {
         String currentAdminId = (String) session.getAttribute("admin_id");
 
         if (adminId == null) {
-        	RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/admin_login.jsp?error=not_logged_in");
+        	RequestDispatcher dispatcher = request.getRequestDispatcher("./WEB-INF/jsp/admin_login.jsp?error=not_logged_in");
             dispatcher.forward(request, response);
         }
         
@@ -68,12 +68,12 @@ public class EditAdminServlet extends HttpServlet {
         if (newAdminId == null || newAdminId.trim().isEmpty() || 
                 password == null || password.trim().isEmpty()) {
                 request.setAttribute("error", "すべてのフィールドを入力してください。");
-                request.getRequestDispatcher("/WEB-INF/jsp/edit_admin.jsp").forward(request, response);
+                request.getRequestDispatcher("./WEB-INF/jsp/edit_admin.jsp").forward(request, response);
                 return;
         }
         if (!password.equals(confirmPassword)) {
             request.setAttribute("error", "パスワードが一致していません。");
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/edit_admin.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("./WEB-INF/jsp/edit_admin.jsp");
             dispatcher.forward(request, response);
             return;
         }
@@ -99,6 +99,6 @@ public class EditAdminServlet extends HttpServlet {
             request.setAttribute("error", "データベースエラーが発生しました。");
         }
 
-        request.getRequestDispatcher("/WEB-INF/jsp/edit_admin.jsp").forward(request, response);
+        request.getRequestDispatcher("./WEB-INF/jsp/edit_admin.jsp").forward(request, response);
     }
 }

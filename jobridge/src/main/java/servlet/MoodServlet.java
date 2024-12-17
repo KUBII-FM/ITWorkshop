@@ -23,7 +23,7 @@ public class MoodServlet extends HttpServlet {
 
         // セッション確認
         if (session == null || session.getAttribute("user_id") == null) {
-            response.sendRedirect("./index.jsp?error=3"); // セッション切れエラー
+            response.sendRedirect("/jobridge/index.jsp?error=3"); // セッション切れエラー
             return;
         }
 

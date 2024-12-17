@@ -12,13 +12,14 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import model.DatabaseUtil;
 
 @WebServlet("/RegisterServlet")
 public class RegisterServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/register.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("./WEB-INF/jsp/register.jsp");
         dispatcher.forward(request, response);
     }
 
@@ -31,7 +32,7 @@ public class RegisterServlet extends HttpServlet {
 
         if (!password.equals(confirmPassword)) {
             request.setAttribute("error", "password_mismatch");
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/register.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("./WEB-INF/jsp/register.jsp");
             dispatcher.forward(request, response);
             return;
         }
@@ -46,7 +47,7 @@ public class RegisterServlet extends HttpServlet {
 
             if (rs.getInt(1) > 0) {
                 request.setAttribute("error", "user_or_username_exists");
-                RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/register.jsp");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("./WEB-INF/jsp/register.jsp");
                 dispatcher.forward(request, response);
                 return;
             }
@@ -58,13 +59,18 @@ public class RegisterServlet extends HttpServlet {
             insertStmt.setString(3, password);
             insertStmt.executeUpdate();
 
-            request.setAttribute("success", "registered");
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/register.jsp");
-            dispatcher.forward(request, response);
+            // セッション無効化（ログアウト処理）
+            HttpSession session = request.getSession(false);
+            if (session != null) {
+                session.invalidate();
+            }
+
+            // index.jspにリダイレクトし、成功メッセージを表示
+            response.sendRedirect("index.jsp?success=registered");
         } catch (SQLException e) {
             e.printStackTrace();
             request.setAttribute("error", "database_error");
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/register.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("./WEB-INF/jsp/register.jsp");
             dispatcher.forward(request, response);
         }
     }

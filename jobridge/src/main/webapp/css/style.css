@@ -4,7 +4,7 @@ body {
 	font-family: "M PLUS Rounded 1c", sans-serif;
 	font-weight: 400;
 	font-style: normal;
-    width: 84%;
+    width: 88%;
     margin: auto;
     padding: 0;
     color: #333;
@@ -76,7 +76,7 @@ input, select, textarea {
 
 /* テーブル設定 */
 table {
-    width: 86%;
+    width: 88%;
     margin: 20px auto;
     border-collapse: collapse;
     background-color: #ffffff;
@@ -132,14 +132,14 @@ tr:hover {
 .date-range-form {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 10px; /* 各要素間のスペース */
-    margin: 10px auto; /* フォーム全体の余白 */
+    justify-content: space-evenly;
+    gap: 5px; /* 各要素間のスペース */
+    margin: 5px auto; /* フォーム全体の余白 */
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 5px;
     background-color: #f9f9f9;
-    max-width: 82%; /* フォーム全体の幅を制限 */
+    max-width: 86%; /* フォーム全体の幅を制限 */
 }
 
 .date-range-form label {
@@ -155,18 +155,19 @@ tr:hover {
     border-radius: 3px;
 }
 
-.date-range-form button {
-    background-color: #fa9638;
-    color: #ffffff;
-    border: none;
-    border-radius: 5px;
-    padding: 8px;
-    font-size: 14px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+.form-button {
+    margin-top: auto; /* 上部に余白を追加 */
+    display: flex;
+    justify-content: center; /* ボタンを中央に配置 */
 }
 
 .date-range-form button:hover {
     background-color: #cc7a2e;
 }
 
+.form-group {
+    width: 100%; /* 各グループを幅いっぱいに */
+    display: flex;
+    flex-direction: column; /* ラベルと入力を縦方向に並べる */
+    text-align: left; /* ラベルを左揃え */
+}

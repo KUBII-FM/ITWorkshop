@@ -33,7 +33,7 @@ public class LoginServlet extends HttpServlet {
                 HttpSession session = request.getSession();
                 session.setAttribute("user_id", userId);
                 session.setAttribute("username", username);
-                response.sendRedirect("UserServlet");
+                response.sendRedirect("/jobridge/UserServlet");
             } else {
                 response.sendRedirect("index.jsp?error=1"); // エラーコード1: ログイン失敗
             }

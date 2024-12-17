@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class DatabaseUtil {
 	private static final String URL = "jdbc:h2:D:\\DB/mental_tool";
-//    private static final String URL = "jdbc:mariadb://dion.mydns.jp:3306/mental_tool";
+//    private static final String URL = "jdbc:mariadb://localhost:3306/mental_tool";
     private static final String USER = "jobridge";
     private static final String PASSWORD = "";
 

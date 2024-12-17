@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="stylesheet" type="text/css" href="./css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -10,11 +11,11 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-<div class="container">
+
     <h1>${userId} の気分のグラフ</h1>
 
     <!-- グラフ表示領域 -->
-    <canvas id="moodChart" width="300" height="150"></canvas>
+    <canvas id="moodChart" width="300" height="210"></canvas>
 
 	<script>
 	    const moodData = ${moodDataJson};
@@ -81,17 +82,26 @@
 	        });
 	    }
 	</script>
-	</div>
+
        
     <!-- 期間選択フォーム -->
 	<form action="ChartServlet" method="get" class="date-range-form">
 	    <input type="hidden" name="user_id" value="${userId}">
-	    <label for="start_date">開始日:</label>
-	    <input type="date" id="start_date" name="start_date" required>
-	    <label for="end_date">終了日:</label>
-	    <input type="date" id="end_date" name="end_date" required>
-	    <button type="submit">適用</button>
+	
+	    <div class="form-group">
+	        <label for="start_date">開始日:</label>
+	        <input type="date" id="start_date" name="start_date" required>
+	      </div>
+	    <div class="form-group">
+	        <label for="end_date">終了日:</label>
+	        <input type="date" id="end_date" name="end_date" required>
+	    </div>
+	
+	    <div class="form-button">
+	        <button type="submit">適用</button>
+	    </div>
 	</form>
+
     <div class="container">
     <a href="./AdminServlet">本日の登録情報に戻る</a> | 
     <a href="./LogoutServlet">ログアウト</a>

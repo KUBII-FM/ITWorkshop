@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="stylesheet" type="text/css" href="./css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,7 +18,7 @@
 	    <p class="error">
 	        <c:choose>
 	            <c:when test="${error == 'user_or_username_exists'}">
-	                ユーザーIDまたはニックネームがすでに使用されています。
+	                利用者番号またはニックネームがすでに使用されています。
 	            </c:when>
 	            <c:when test="${error == 'password_mismatch'}">
 	                パスワードが一致しません。
@@ -46,6 +47,9 @@
 
         <label for="password">パスワード:</label>
         <input type="password" id="password" name="password" value="${param.password}" required>
+        
+        <label for="confirm_password">パスワード確認:</label>
+        <input type="password" id="confirm_password" name="confirm_password" required>
 
         <button type="submit">登録</button>
     </form>

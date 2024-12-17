@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -10,7 +11,15 @@
     <title>ココログ - トップページ</title>
 </head>
 <body>
-    <h1>ココログ</h1>
+    <h1>ココログ</h1>   
+    
+    <!-- 成功メッセージの表示 -->
+    <c:if test="${param.success == 'registered'}">
+        <p class="success">登録が完了しました。</p>
+    </c:if>
+    <c:if test="${param.success == 'logout'}">
+        <p class="success">ログアウトしました。</p>
+    </c:if>
     
     <!-- エラーメッセージの表示 -->
     <c:if test="${param.error == '1'}">
@@ -24,7 +33,7 @@
     </c:if>
     
     <form action="./LoginServlet" method="post">
-        <h2>利用者ログイン</h2>
+        <h3>利用者ログイン</h3>
         <label for="user_id">利用者ID:</label>
         <input type="text" id="user_id" name="user_id" required>
         <br>

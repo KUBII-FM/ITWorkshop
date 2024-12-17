@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="stylesheet" type="text/css" href="./css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,11 +23,11 @@
         <thead>
             <tr>
                 <th>利用者ID</th>
-                <th>ユーザー名</th>
+                <th>ニックネーム</th>
                 <th>日付</th>
                 <th>気持ち</th>
                 <th>コメント</th>
-                <th>アクション</th>
+                <th>グラフ</th>
             </tr>
         </thead>
         <tbody>
@@ -42,7 +43,7 @@
                     <td>${user.comment}</td>
                     <!-- グラフへのリンク -->
                     <td>
-                        <a href="ChartServlet?user_id=${user.user_id}">グラフを見る</a>
+                        <a href="ChartServlet?user_id=${user.user_id}">選択</a>
                     </td>
                 </tr>
             </c:forEach>

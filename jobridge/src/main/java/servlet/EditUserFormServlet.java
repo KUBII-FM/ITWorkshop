@@ -58,7 +58,7 @@ public class EditUserFormServlet extends HttpServlet {
         }
 
         // JSP にデータを渡す
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/edit_user_form.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("./WEB-INF/jsp/edit_user_form.jsp");
         dispatcher.forward(request, response);
     }
 

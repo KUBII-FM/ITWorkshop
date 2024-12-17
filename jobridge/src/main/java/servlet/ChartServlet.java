@@ -31,7 +31,7 @@ public class ChartServlet extends HttpServlet {
         if (userId == null || userId.isEmpty()) {
             // user_id が不足している場合はエラーページを表示
             request.setAttribute("error", "missing_user_id");
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/admin.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("./WEB-INF/jsp/admin.jsp");
             dispatcher.forward(request, response);
             return;
         }
@@ -47,7 +47,7 @@ public class ChartServlet extends HttpServlet {
         // 日付のバリデーション
         if ((startDate == null || startDate.isEmpty()) || (endDate == null || endDate.isEmpty())) {
             request.setAttribute("error", "invalid_date_range");
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/admin.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("./WEB-INF/jsp/admin.jsp");
             dispatcher.forward(request, response);
             return;
         }
@@ -80,14 +80,14 @@ public class ChartServlet extends HttpServlet {
             request.setAttribute("userId", userId);
 
             // チャート用の JSP にフォワード
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/chart.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("./WEB-INF/jsp/chart.jsp");
             dispatcher.forward(request, response);
 
         } catch (SQLException e) {
             e.printStackTrace();
             // データベースエラーの場合はエラーページを表示
             request.setAttribute("error", "database_error");
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/admin.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("./WEB-INF/jsp/admin.jsp");
             dispatcher.forward(request, response);
         }
     }
