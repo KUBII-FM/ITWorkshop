@@ -20,6 +20,9 @@
     <c:if test="${param.success == 'logout'}">
         <p class="success">ログアウトしました。</p>
     </c:if>
+    <c:if test="${param.success == 'user_updated'}">
+        <p class="success">登録情報が更新されました。</p>
+    </c:if>
     
     <!-- エラーメッセージの表示 -->
     <c:if test="${param.error == '1'}">
@@ -35,9 +38,11 @@
     <form action="./LoginServlet" method="post">
         <h3>利用者ログイン</h3>
         <label for="user_id">利用者ID:</label>
+        <br>
         <input type="text" id="user_id" name="user_id" required>
         <br>
         <label for="password">パスワード:</label>
+        <br>
         <input type="password" id="password" name="password" required>
         <br>
         <button type="submit">ログイン</button>

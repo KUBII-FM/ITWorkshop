@@ -34,13 +34,20 @@
             <c:forEach var="user" items="${userData}">
                 <tr>
                     <!-- 利用者IDをリンク化 -->
-                    <td>
-                        <a href="UserHistoryServlet?user_id=${user.user_id}">${user.user_id}</a>
-                    </td>
+                    <td>${user.user_id}</td>
                     <td>${user.username}</td>
                     <td>${user.date}</td>
-                    <td>${user.mood}</td>
-                    <td>${user.comment}</td>
+                    <td>
+					    <c:choose>
+					        <c:when test="${user.mood == '5'}">絶好調</c:when>
+					        <c:when test="${user.mood == '4'}">好調</c:when>
+					        <c:when test="${user.mood == '3'}">普通</c:when>
+					        <c:when test="${user.mood == '2'}">不調</c:when>
+					        <c:when test="${user.mood == '1'}">絶不調</c:when>
+					        <c:otherwise>未登録</c:otherwise>
+					    </c:choose>
+                    </td>
+                    <td>${user.comment}<br><a href="UserHistoryServlet?user_id=${user.user_id}"><small>コメント一覧</small></a></td>
                     <!-- グラフへのリンク -->
                     <td>
                         <a href="ChartServlet?user_id=${user.user_id}">選択</a>

@@ -25,9 +25,9 @@
     <form action="./AdminLoginServlet" method="post">
     	<h3>管理者ログイン</h3>
         <label for="admin_id">管理者ID:</label>
-        <input type="text" id="admin_id" name="admin_id" required>
+        <input type="text" id="admin_id" name="admin_id" required><br>
         <label for="password">パスワード:</label>
-        <input type="password" id="password" name="password" required>
+        <input type="password" id="password" name="password" required><br>
         <button type="submit">ログイン</button>
     </form>
     <div class="container">

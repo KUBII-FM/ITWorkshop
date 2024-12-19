@@ -68,6 +68,15 @@
         <servlet-name>EditUserServlet</servlet-name>
         <url-pattern>/EditUserServlet</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>EditUserUServlet</servlet-name>
+        <servlet-class>servlet.EditUserUServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>EditUserUServlet</servlet-name>
+        <url-pattern>/EditUserUServlet</url-pattern>
+    </servlet-mapping>
 
     <servlet>
         <servlet-name>LoginServlet</servlet-name>

@@ -1,108 +1,149 @@
 /* 全体設定 */
 body {
-    background-color: #f5f5f5;
-	font-family: "M PLUS Rounded 1c", sans-serif;
-	font-weight: 400;
-	font-style: normal;
-    width: 88%;
+    background: linear-gradient(to bottom, #fffaf0, #fef4e1); /* 背景に軽いグラデーション */
+    font-family: "M PLUS Rounded 1c", "Inter", sans-serif;
+    font-weight: 400;
+    line-height: 1.8;
+    max-width: 720px;
     margin: auto;
-    padding: 0;
-    color: #333;
+    padding: 10px;
+    color: #444;
 }
 
 /* ヘッダー、タイトル */
 h1, h2, h3 {
-    color: #333;
+    color: #fa8c38;
     text-align: center;
-    margin-top: 20px;
+    margin-top: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    line-height: 1.2;
+    text-transform: uppercase;
+    position: relative;
+}
+
+p {
+    color: #3e3e3e;
+    text-align: center;
+    margin-top: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    line-height: 1.2;
+    text-transform: uppercase;
+    position: relative;
+}
+
+h1::after, h2::after {
+    content: "";
+    display: block;
+    width: 50px;
+    height: 3px;
+    background-color: #fa9638;
+    margin: 10px auto;
+    border-radius: 5px;
 }
 
 /* 全体のリンク設定 */
 a {
-    text-decoration: none;
     color: #fa9638;
     font-weight: bold;
-    display: inline-block;
-    margin-top: auto;
-    text-align: center;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease;
 }
 
 a:hover {
-    text-decoration: underline;
+    color: #cc7a2e;
+    border-bottom: 2px solid #fa9638;
 }
 
 /* ボタンスタイル */
 button {
-    background-color: #fa9638;
-    color: #ffffff;
+    background: linear-gradient(to right, #fa9638, #ff7e2a); /* モダンなグラデーション */
+    color: white;
     border: none;
-    border-radius: 5px;
-    padding: 10px;
-    font-size: 16px;
+    border-radius: 24px;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 600;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 button:hover {
-    background-color: #cc7a2e;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
 }
 
 /* フォーム */
 form {
-    background-color: #ffffff;
-    border: 1px solid #dddddd;
-    border-radius: 10px;
+    background-color: white;
+    border-radius: 12px;
     padding: 20px;
-    max-width: 400px;
+    max-width: 380px;
     margin: 20px auto;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+form:hover {
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
 }
 
 label {
-    display: block;
-    margin-bottom: 5px;
+    font-size: 14px;
+    color: #3e3e3e;
     font-weight: bold;
-    color: #333;
 }
 
 input, select, textarea {
-    width: calc(100% - 20px);
-    padding: 10px;
-    margin: 5px 0 15px;
-    border: 1px solid #cccccc;
+    width: 95%;
+    padding: 8px;
+    margin: 6px 0 16px;
+    border: 1px solid #ddd;
     border-radius: 5px;
+    background-color: #f9f9f9;
     font-size: 14px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: #fa9638;
+    box-shadow: 0 0 5px rgba(250, 150, 56, 0.5);
+    outline: none;
 }
 
 /* テーブル設定 */
 table {
-    width: 88%;
-    margin: 20px auto;
+    width: 100%;
+    margin: 30px 0;
     border-collapse: collapse;
     background-color: #ffffff;
-    border-radius: 5px;
+    border-radius: 4px;
     overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
 }
 
 th, td {
-    padding: 10px;
+    padding: 15px;
     text-align: center;
-    border-bottom: 1px solid #eeeeee;
+    border-bottom: 1px solid #f2f2f2;
 }
 
 th {
-    background-color: #fa9638;
-    color: #ffffff;
+    background: #fa9638;
+    color: white;
     font-weight: bold;
+    text-transform: uppercase;
 }
 
 tr:nth-child(even) {
-    background-color: #f9f9f9;
+    background-color: #fef6e8;
 }
 
 tr:hover {
-    background-color: #f1f1f1;
+    background-color: #faedd2;
 }
 
 /* エラーメッセージ */
@@ -132,14 +173,14 @@ tr:hover {
 .date-range-form {
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-around;
     gap: 5px; /* 各要素間のスペース */
     margin: 5px auto; /* フォーム全体の余白 */
     padding: 8px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 4px;
     background-color: #f9f9f9;
-    max-width: 86%; /* フォーム全体の幅を制限 */
+    max-width: 100%; /* フォーム全体の幅を制限 */
 }
 
 .date-range-form label {
@@ -153,10 +194,10 @@ tr:hover {
     font-size: 14px;
     border: 1px solid #ccc;
     border-radius: 3px;
+	max-width: 80%; /* フォーム全体の幅を制限 */
 }
 
 .form-button {
-    margin-top: auto; /* 上部に余白を追加 */
     display: flex;
     justify-content: center; /* ボタンを中央に配置 */
 }

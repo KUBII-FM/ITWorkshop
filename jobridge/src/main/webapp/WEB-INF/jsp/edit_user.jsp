@@ -29,8 +29,8 @@
         <thead>
             <tr>
                 <th>利用者ID</th>
-                <th>ユーザー名</th>
-                <th>修正/削除</th>
+                <th>ニックネーム</th>
+                <th>変更/削除</th>
             </tr>
         </thead>
         <tbody>

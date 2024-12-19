@@ -40,17 +40,21 @@
     
     <form action="./RegisterServlet" method="post">
         <label for="user_id">利用者番号:</label>
+        <br>
         <input type="text" id="user_id" name="user_id" value="${param.user_id}" required>
-
+		<br>
         <label for="username">ニックネーム:</label>
+        <br>
         <input type="text" id="username" name="username" value="${param.username}" required>
-
+		<br>
         <label for="password">パスワード:</label>
+        <br>
         <input type="password" id="password" name="password" value="${param.password}" required>
-        
+        <br>
         <label for="confirm_password">パスワード確認:</label>
+        <br>
         <input type="password" id="confirm_password" name="confirm_password" required>
-
+		<br>
         <button type="submit">登録</button>
     </form>
     <div class="container">

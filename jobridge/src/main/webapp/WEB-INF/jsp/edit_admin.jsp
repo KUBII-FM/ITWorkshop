@@ -26,15 +26,18 @@
     <!-- 管理者情報変更フォーム -->
     <form action="EditAdminServlet" method="post">
         <label for="admin_id">新しい管理者ID:</label>
+        <br>
         <input type="text" id="admin_id" name="admin_id" value="${admin_id}" required>
-
+		<br>
         <label for="password">新しいパスワード:</label>
+        <br>
         <input type="password" id="password" name="password" required>
-        
+		<br>        
         <label for="confirm_password">パスワード確認:</label>
+        <br>
         <input type="password" id="confirm_password" name="confirm_password" required>
-
-        <button type="submit">変更を保存</button>
+		<br>
+        <button type="submit">変更</button>
     </form>
     <div class="container">
     <a href="AdminServlet">本日の登録情報に戻る</a> | 

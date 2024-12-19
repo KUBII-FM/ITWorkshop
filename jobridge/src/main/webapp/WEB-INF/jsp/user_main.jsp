@@ -14,7 +14,7 @@
         <h1>ココログ</h1>
         
         <div class="container">
-        <p>ようこそ、<strong>${sessionScope.username}</strong>さん</p>
+        <h3>ようこそ、<strong>${sessionScope.username}</strong>さん</h3>
 
         <!-- 成功・エラーメッセージ -->
         <c:if test="${param.error == 'database_error'}">
@@ -23,27 +23,24 @@
         <c:if test="${param.success == 'entry_added'}">
             <p class="success">今日の気持ちが登録されました。</p>
         </c:if>
+        <c:if test="${param.success == 'user_updated'}">
+            <p class="success">登録情報が更新されました。</p>
+        </c:if>
 
 	    <!-- 今日の登録済みデータ表示 -->
-	    <h3>今日の登録内容</h3>
+	    <c:if test="${empty mood}">
+	       <p><strong>今日の気持ち：未登録</strong> 
+        </c:if>
 	    <c:if test="${not empty mood}">
-	        <p><strong>気持ち:</strong> 
-	            <c:choose>
-	                <c:when test="${mood == 5}">絶好調</c:when>
-	                <c:when test="${mood == 4}">好調</c:when>
-	                <c:when test="${mood == 3}">普通</c:when>
-	                <c:when test="${mood == 2}">不調</c:when>
-	                <c:when test="${mood == 1}">絶不調</c:when>
-	            </c:choose>
-	        </p>
-	        <p><strong>コメント:</strong> ${comment}</p>
-	    </c:if>
+	       <p><strong>今日の気持ち：登録済み</strong> 
+        </c:if>
 	    </div>
 	
 	    <!-- 今日の気持ちとコメントを入力するフォーム -->
-	    <h2>今日の気持ちを登録 / 編集</h2>
+	    <h2>今日の気持ちを登録 / 更新</h2>
 	    <form action="MoodServlet" method="post">
 	        <label for="mood">今日の気持ちを選択してください :</label>
+	        <br>
 	        <select id="mood" name="mood" required>
 	            <option value="">選択してください</option>
 	            <option value="5" ${mood == 5 ? 'selected' : ''}>絶好調</option>
@@ -52,12 +49,14 @@
 	            <option value="2" ${mood == 2 ? 'selected' : ''}>不調</option>
 	            <option value="1" ${mood == 1 ? 'selected' : ''}>絶不調</option>            
 	        </select>
+	        <br>
             <label for="comment">コメント 最大128文字 (任意):</label>
+            <br>
             <textarea id="comment" name="comment" rows="4" placeholder="コメントを入力してください">${comment}</textarea>
         <button type="submit">登録 / 更新</button>
     </form>
 	<div class="container">
-    <!-- ログアウトリンク -->
+    <a href="./EditUserUServlet">利用者情報の変更</a> | 
     <a href="./LogoutServlet">ログアウト</a>
     </div>
 </body>

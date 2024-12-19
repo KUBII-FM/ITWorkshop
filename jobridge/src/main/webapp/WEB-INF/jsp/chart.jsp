@@ -15,7 +15,7 @@
     <h1>${userId} の気分のグラフ</h1>
 
     <!-- グラフ表示領域 -->
-    <canvas id="moodChart" width="300" height="210"></canvas>
+    <canvas id="moodChart" width="300" height="200"></canvas>
 
 	<script>
 	    const moodData = ${moodDataJson};
