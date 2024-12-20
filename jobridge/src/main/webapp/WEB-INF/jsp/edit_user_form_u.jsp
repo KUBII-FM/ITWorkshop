@@ -8,7 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
-    <title>利用者情報の修正</title>
+	<link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <title>利用者情報の変更</title>
 </head>
 <body>
     <h1>利用者情報の変更</h1>

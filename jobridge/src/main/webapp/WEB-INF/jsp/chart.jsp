@@ -7,12 +7,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
-    <title>気分のグラフ</title>
+	<link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <title>気分推移</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 
-    <h1>${userId} の気分のグラフ</h1>
+    <h1>${userId} の気分推移</h1>
 
     <!-- グラフ表示領域 -->
     <canvas id="moodChart" width="300" height="200"></canvas>

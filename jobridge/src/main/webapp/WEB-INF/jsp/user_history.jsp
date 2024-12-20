@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
-    <title>過去30日間のコメント一覧</title>
+    <title>コメント一覧</title>
 </head>
 <body>
     <h1>${userId} のコメント一覧</h1>
@@ -54,7 +54,7 @@
     </table>
     
     <!-- 期間選択フォーム -->
-	<form action="ChartServlet" method="get" class="date-range-form">
+	<form action="UserHistoryServlet" method="get" class="date-range-form">
 	    <input type="hidden" name="user_id" value="${userId}">
 	
 	    <div class="form-group">

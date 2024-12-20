@@ -12,7 +12,7 @@ public class DatabaseUtil {
 
     static {
         try {
-//        	Class.forName("org.h2.Driver");
+        	Class.forName("org.h2.Driver");
 //             MariaDB JDBC ドライバのロード
             Class.forName("org.mariadb.jdbc.Driver");
         } catch (ClassNotFoundException e) {

@@ -45,7 +45,7 @@ public class UserServlet extends HttpServlet {
             request.setAttribute("error", "database_error");
         }
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("./WEB-INF/jsp/user_main.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/user_main.jsp");
         dispatcher.forward(request, response);
     }
 }

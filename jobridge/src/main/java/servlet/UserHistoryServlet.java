@@ -28,7 +28,7 @@ public class UserHistoryServlet extends HttpServlet {
         // 必須パラメータのチェック
         if (userId == null || userId.isEmpty()) {
             request.setAttribute("error", "利用者IDが指定されていません。");
-            RequestDispatcher dispatcher = request.getRequestDispatcher("./WEB-INF/jsp/admin.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/admin.jsp");
             dispatcher.forward(request, response);
             return;
         }
@@ -76,7 +76,7 @@ public class UserHistoryServlet extends HttpServlet {
         }
 
         // JSP にフォワード
-        RequestDispatcher dispatcher = request.getRequestDispatcher("./WEB-INF/jsp/user_history.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/user_history.jsp");
         dispatcher.forward(request, response);
     }
 }

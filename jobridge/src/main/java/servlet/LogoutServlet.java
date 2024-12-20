@@ -19,7 +19,7 @@ public class LogoutServlet extends HttpServlet {
             session.invalidate();
         }
 
-        // ログアウトページへフォワード
+        // トップページへフォワード
         response.sendRedirect("index.jsp?success=logout");
     }
 }

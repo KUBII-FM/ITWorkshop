@@ -25,7 +25,7 @@ public class AdminServlet extends HttpServlet {
         String adminId = (String) session.getAttribute("admin_id");
 
         if (adminId == null) {
-        	RequestDispatcher dispatcher = request.getRequestDispatcher("./WEB-INF/jsp/admin_login.jsp?error=not_logged_in");
+        	RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/admin_login.jsp?error=not_logged_in");
         	dispatcher.forward(request, response);
         }
 
@@ -49,13 +49,13 @@ public class AdminServlet extends HttpServlet {
             }
 
             request.setAttribute("userData", userData);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("./WEB-INF/jsp/admin.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/admin.jsp");
             dispatcher.forward(request, response);
 
         } catch (SQLException e) {
             e.printStackTrace();
             request.setAttribute("error", "データベースエラーが発生しました。");
-            RequestDispatcher dispatcher = request.getRequestDispatcher("./WEB-INF/jsp/admin.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/admin.jsp");
             dispatcher.forward(request, response);
         }
     }

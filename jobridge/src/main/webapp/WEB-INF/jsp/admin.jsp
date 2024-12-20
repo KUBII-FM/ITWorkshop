@@ -8,7 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
-    <title>管理者ページ</title>
+	<link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <title>管理者メイン</title>
 </head>
 <body>
     <h1>本日の登録情報</h1>

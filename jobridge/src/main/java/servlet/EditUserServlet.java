@@ -58,7 +58,7 @@ public class EditUserServlet extends HttpServlet {
         }
 
         // JSP にデータを渡す
-        RequestDispatcher dispatcher = request.getRequestDispatcher("./WEB-INF/jsp/edit_user.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/edit_user.jsp");
         dispatcher.forward(request, response);
     }
 
@@ -80,7 +80,7 @@ public class EditUserServlet extends HttpServlet {
             }
             if (!password.equals(confirmPassword)) {
                 request.setAttribute("error", "パスワードが一致していません。");
-                RequestDispatcher dispatcher = request.getRequestDispatcher("./WEB-INF/jsp/edit_user_form.jsp");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/edit_user_form.jsp");
                 dispatcher.forward(request, response);
                 return;
             }

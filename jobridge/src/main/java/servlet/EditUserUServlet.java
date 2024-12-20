@@ -20,11 +20,18 @@ public class EditUserUServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession(false);
+        
+        if (session == null || session.getAttribute("user_id") == null) {
+            // セッションが切れている場合、index.jsp にリダイレクト
+            response.sendRedirect("index.jsp?error=3");
+            return;
+        }
+        
         String userId = (String) session.getAttribute("user_id");
 
         if (userId == null || userId.isEmpty()) {
             session.setAttribute("error", "利用者IDが取得できませんでした。");
-            response.sendRedirect("./user_main.jsp");
+            response.sendRedirect("index.jsp?error=3");
             return;
         }
 
@@ -42,12 +49,12 @@ public class EditUserUServlet extends HttpServlet {
                 dispatcher.forward(request, response);
             } else {
                 session.setAttribute("error", "利用者情報が見つかりません。");
-                response.sendRedirect("./user_main.jsp");
+                response.sendRedirect("/WEB-INF/jsp/user_main.jsp");
             }
         } catch (SQLException e) {
             e.printStackTrace();
             session.setAttribute("error", "データベースエラーが発生しました。");
-            response.sendRedirect("./user_main.jsp");
+            response.sendRedirect("/WEB-INF/jsp/user_main.jsp");
         }
     }
 
@@ -69,7 +76,7 @@ public class EditUserUServlet extends HttpServlet {
             }
             if (!password.equals(confirmPassword)) {
                 request.setAttribute("error", "パスワードが一致していません。");
-                RequestDispatcher dispatcher = request.getRequestDispatcher("./WEB-INF/jsp/edit_user_form_u.jsp");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/edit_user_form_u.jsp");
                 dispatcher.forward(request, response);
                 return;
             }

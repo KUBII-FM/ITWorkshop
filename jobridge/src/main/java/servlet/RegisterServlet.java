@@ -19,7 +19,7 @@ import model.DatabaseUtil;
 public class RegisterServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("./WEB-INF/jsp/register.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/register.jsp");
         dispatcher.forward(request, response);
     }
 
@@ -32,7 +32,7 @@ public class RegisterServlet extends HttpServlet {
 
         if (!password.equals(confirmPassword)) {
             request.setAttribute("error", "password_mismatch");
-            RequestDispatcher dispatcher = request.getRequestDispatcher("./WEB-INF/jsp/register.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/register.jsp");
             dispatcher.forward(request, response);
             return;
         }
@@ -47,7 +47,7 @@ public class RegisterServlet extends HttpServlet {
 
             if (rs.getInt(1) > 0) {
                 request.setAttribute("error", "user_or_username_exists");
-                RequestDispatcher dispatcher = request.getRequestDispatcher("./WEB-INF/jsp/register.jsp");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/register.jsp");
                 dispatcher.forward(request, response);
                 return;
             }
@@ -70,7 +70,7 @@ public class RegisterServlet extends HttpServlet {
         } catch (SQLException e) {
             e.printStackTrace();
             request.setAttribute("error", "database_error");
-            RequestDispatcher dispatcher = request.getRequestDispatcher("./WEB-INF/jsp/register.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/register.jsp");
             dispatcher.forward(request, response);
         }
     }

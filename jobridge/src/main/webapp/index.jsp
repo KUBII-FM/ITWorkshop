@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
+	<link rel="icon" type="image/x-icon" href="favicon.ico">
     <title>ココログ - トップページ</title>
 </head>
 <body>
@@ -48,8 +49,8 @@
         <button type="submit">ログイン</button>
     </form>
     <div class="container">
-    <a href="./RegisterServlet">新規登録はこちら</a> |
-    <a href="./AdminLoginServlet">管理者ログインはこちら</a>
+    <a href="RegisterServlet">新規登録はこちら</a> |
+    <a href="AdminLoginServlet">管理者ログインはこちら</a>
     </div>
 </body>
 </html>
