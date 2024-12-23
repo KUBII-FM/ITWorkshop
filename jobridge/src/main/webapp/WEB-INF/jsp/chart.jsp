@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
-	<link rel="icon" type="image/x-icon" href="../favicon.ico">
+	<link rel="icon" type="image/x-icon" href="./favicon.ico">
     <title>気分推移</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
@@ -46,7 +46,7 @@
 	                plugins: {
 	                    title: {
 	                        display: true,
-	                        text: '気分の変化',
+	                        text: '気分の推移',
 	                        font: {
 	                            size: 20
 	                        }
